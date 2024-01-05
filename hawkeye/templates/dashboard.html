@@ -1,0 +1,321 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attendance Management System</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <!-- ===== BOX ICONS ===== -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="{%static 'index.css' %}" />
+    <link rel="shortcut icon" href="eyelogo3.png" type="image/x-icon" />
+    <style>
+      :root{
+      --main-color: #fff;
+      --secondary-color: rgb(72,68,163);
+    }
+
+      .upload{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 90vh;
+          animation: upload 0.5s linear forwards;
+          color: var(--main-color);
+      }
+
+      @keyframes upload{
+        0%{
+          opacity: 0;
+          transform: scale(0);
+        }
+        50%{
+          opacity: 0.5;
+          transform: scale(0.5);
+        }
+        100%{
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .upload form{
+          margin: auto;
+          padding: 50px;
+          background: transparent;
+          border-radius: 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          box-shadow: 0px 0px 10px #000;
+      }
+
+      .upload form h2{
+          font-size: 30px;
+          margin-bottom: 30px;
+          text-align: center;
+          font-weight: 700;
+          color: var(--main-color);
+      }
+
+      .upload form h2 span{
+          color: var(--secondary-color);
+      }
+
+      .upload form label{
+          font-size: 22px;
+          font-weight: 400;
+          margin-top: 30px;
+          color: var(--main-color);
+      }
+
+      .upload form input{
+          width: 300px;
+          height: 40px;
+          outline: 0;
+          border: 0;
+          padding: 5px;
+          color: #000;
+          background: transparent;
+          font-size: 20px;
+          cursor: pointer;
+      }
+
+      .upload form button{
+          width: 100%;
+          margin-top: 50px;
+          height: 40px;
+          outline: 0;
+          border: 0;
+          background: rgba(255,255,255,0.3);
+          box-shadow: 0px 0px 10px #000;
+          font-size: 20px;
+          color: #000;
+          cursor: pointer;
+          font-weight: 700;
+      }
+
+      .upload form button:hover{
+          box-shadow: 0px 0px  20px var(--secondary-color);
+          background-color: var(--secondary-color);
+          color: #fff;
+      }
+
+    @media (max-width: 750px){
+      body{
+        height: 100%;
+      }
+    }
+
+    footer .footer{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 10px 20px;
+      background-color: rgba(72,68,163,0.9);
+      color: #fff;
+      flex-basis: 200;
+    }
+
+    .info h4{
+      color: var(--main-color);
+    }
+
+    .social ul{
+      display: flex;
+      align-items: center;
+    }
+
+    .social ul li{
+      list-style-type: none;
+    }
+
+    .social ul li a{
+      color: #fff;
+      font-size: 22px;
+      margin: auto 15px;
+    }
+
+    .social .fa-brands.fa-instagram:hover{
+      color: rgb(246,2,201);
+      text-shadow: 0px 0px 26px rgb(246,2,201);
+      transform: scale(1.1);
+    }
+
+    .social .fa-brands.fa-linkedin:hover{
+      color: rgb(0,119,181);
+      text-shadow: 0px 0px 26px rgb(0,119,181);
+      transform: scale(1.1);
+    }
+
+    .social .fa-brands.fa-facebook:hover{
+      color: rgb(72,103,170);
+      text-shadow: 0px 0px 26px rgb(72,103,170);
+      transform: scale(1.1);
+    }
+
+    .social .fa-brands.fa-twitter:hover{
+      color: rgb(29,161,242);
+      text-shadow: 0px 0px 26px rgb(29,161,242);
+      transform: scale(1.1);
+    }
+
+    .heads h2{
+      text-align: center;
+      color: var(--secondary-color);
+    }
+  </style>
+  </head>
+  <body>
+    <header class="header" id="header">
+      <div class="header__toggle">
+        <i class="bx bx-menu" id="header-toggle" style="color: rgb(72,68,163)"></i>
+      </div>
+    </header>
+
+    <div class="heads">
+      <h2>Attendance Management System</h2>
+    </div>
+
+    <div class="l-navbar" id="nav-bar">
+      <nav class="nav">
+        <div>
+          <a href="index.html" class="nav__logo">
+            <i class="bx bx-home nav__logo-icon"></i>
+            <span class="nav__logo-name">Home</span>
+          </a>
+
+          <div class="nav__list">
+            <a href="dashboard.html" class="nav__link active">
+              <i class="bx bx-grid-alt nav__icon"></i>
+              <span class="nav__name">Dashboard</span>
+            </a>
+
+            <a href="index.html" class="nav__link">
+              <i class="bx bx-folder nav__icon"></i>
+              <span class="nav__name">Data</span>
+            </a>
+
+            <!-- <a href="#" class="nav__link">
+              <i class="bx bx-bar-chart-alt-2 nav__icon"></i>
+              <span class="nav__name">Analytics</span>
+            </a> -->
+
+            <a href="login.html" class="nav__link">
+              <i class="bx bx-user nav__icon"></i>
+              <span class="nav__name">Users</span>
+            </a>
+
+            <!-- <a href="#" class="nav__link">
+              <i class="bx bx-bookmark nav__icon"></i>
+              <span class="nav__name">Favorites</span>
+            </a> -->
+          </div>
+        </div>
+
+        <a href="#" class="nav__link">
+          <i class="bx bx-log-out nav__icon"></i>
+          <span class="nav__name">Log Out</span>
+        </a>
+      </nav>
+    </div>
+
+    <main>
+      <div class="pg1">
+          <div class="upload">
+            <form method="post" enctype="multipart/form-data">
+                <h2>Upload <span>Images!</span></h2>
+                <label for="photo-upload">Upload Photos: </label>
+                <input type="file" id="photo-upload" accept="image/*" multiple />
+                <button type="submit" id="analyze-button">Upload</button>
+            </form>    
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer">
+        <div class="info">
+          <h4>Attendify.io</h4>
+        </div>
+        <div class="social">
+          <ul>
+            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+          </ul>
+        </div>
+        <div class="rights">
+          <p><i class="fa-solid fa-copyright"></i> Copyrights reserved.</p>
+        </div>
+      </div>
+      
+    </footer>
+    <script src="{%static 'dashboard.css'%}"></script>
+    <script>
+      /*===== SHOW NAVBAR  =====*/ 
+        const showNavbar = (toggleId, navId, bodyId, headerId) =>{
+        const toggle = document.getElementById(toggleId),
+        nav = document.getElementById(navId),
+        bodypd = document.getElementById(bodyId),
+        headerpd = document.getElementById(headerId)
+
+        // Validate that all variables exist
+        if(toggle && nav && bodypd && headerpd){
+            toggle.addEventListener('click', ()=>{
+                // show navbar
+                nav.classList.toggle('show')
+                // change icon
+                toggle.classList.toggle('bx-x')
+                // add padding to body
+                bodypd.classList.toggle('body-pd')
+                // add padding to header
+                headerpd.classList.toggle('body-pd')
+            })
+          }
+        }
+
+        showNavbar('header-toggle','nav-bar','body-pd','header')
+
+        /*===== LINK ACTIVE  =====*/ 
+        const linkColor = document.querySelectorAll('.nav__link')
+
+        function colorLink(){
+            if(linkColor){
+                linkColor.forEach(l=> l.classList.remove('active'))
+                this.classList.add('active')
+            }
+        }
+        linkColor.forEach(l=> l.addEventListener('click', colorLink))
+
+        // window.addEventListener('load', function () {
+        //     const currentBackgroundPosition = getComputedStyle(document.body).backgroundPosition;
+        //     const [x, y] = currentBackgroundPosition.split(' ');
+            
+        //     const currentX = parseInt(x);
+        //     const currentY = parseInt(y);
+            
+        //     // Move the background by 20% (adjust as needed)
+        //     const newX = currentX + 2000;
+            
+        //     // Set the new background position
+        //     document.body.style.backgroundPosition = `${newX}% ${currentY}`;
+        //   });
+        // gsap.from('body',1.2,{opacity: 0,y: 2, delay: .1})
+    </script>
+  </body>
+</html>

@@ -1,0 +1,400 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ===== BOX ICONS ===== -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="{% static 'index.css' %}" />
+    <link rel="shortcut icon" href="eyelogo3.png" type="image/x-icon" />
+    <title>Hawk-Eye</title>
+    <style>
+      .home_button {
+        padding: 12px 30px;
+        background-color: rgb(72, 68, 163);
+        border-top-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        color: #fff;
+        transition: 0.3s ease-in-out;
+        margin-top: 30px;
+        margin-left: 5px;
+      }
+      .home_button:hover {
+        background-color: #fff;
+        color: rgb(72, 68, 163);
+        box-shadow: 0px 0px 10px rgb(72, 68, 163);
+      }
+      .image img {
+        height: 80vh;
+      }
+    </style>
+  </head>
+  <body id="body-pd">
+    <header class="header" id="header">
+      <div class="header__toggle">
+        <i
+          class="bx bx-menu"
+          id="header-toggle"
+          style="color: rgb(72, 68, 163)"
+        ></i>
+      </div>
+    </header>
+
+    <div class="l-navbar" id="nav-bar">
+      <nav class="nav">
+        <div>
+          
+          <div class="nav__list">
+
+            <a href="" class="nav__link active">
+              <i class="bx bx-home nav__logo-icon"></i>
+              <span class="nav__logo-name">Home</span>
+            </a>
+
+            <a href="{%url 'upload'%}" class="nav__link">
+              <i class="bx bx-grid-alt nav__icon"></i>
+              <span class="nav__name">Dashboard</span>
+            </a>
+
+            <a href="#pg2" class="nav__link">
+              <i class="bx bx-folder nav__icon"></i>
+              <span class="nav__name">Features</span>
+            </a>
+
+            <!-- <a href="#" class="nav__link">
+              <i class="bx bx-bar-chart-alt-2 nav__icon"></i>
+              <span class="nav__name">Analytics</span>
+            </a> -->
+
+            <a href="{%url 'login_or_register'%}" class="nav__link">
+              <i class="bx bx-user nav__icon"></i>
+              <span class="nav__name">Users</span>
+            </a>
+
+            <!-- <a href="#" class="nav__link">
+              <i class="bx bx-bookmark nav__icon"></i>
+              <span class="nav__name">Favorites</span>
+            </a> -->
+          </div>
+        </div>
+        {% if user.is_authenticated %}
+               <a href="{%url 'logout'%}" class="nav__link">
+                     <i class="bx bx-log-out nav__icon"></i>
+                    <span class="nav__name">Log Out</span>
+                </a>
+                {% else %}
+                <a href="{%url 'login_or_register'%}" class="nav__link">
+                  <i class="bx bx-log-in nav__icon"></i>
+                  <span class="nav__name">Log In</span>
+                </a>
+        {% endif %}
+      </nav>
+    </div>
+
+    <div class="pg1">
+      <div class="right-side">
+        <div class="title__box">
+          <div class="title">
+            <h1>HAWK <span style="color: rgb(72, 68, 163)">EYE</span></h1>
+            <h3>Precision in Every Glance</h3>
+          </div>
+        </div>
+      </div>
+      <div class="boast">
+        <div class="rson">
+          <h4><i class="bx bx-check"></i> One-stop solution</h4>
+        </div>
+        <div class="rson">
+          <h4>
+            <i class="bx bx-check"></i> Avoid Buddy punching and Incorect
+            Clock-ins
+          </h4>
+        </div>
+        <div class="rson">
+          <h4>
+            <i class="bx bx-check"></i> Face recognition based attendance
+            system
+          </h4>
+        </div>
+        <div class="rson">
+          <h4><i class="bx bx-check"></i> Stay up to date in real time</h4>
+        </div>
+        <div class="rson">
+          <h4><i class="bx bx-check"></i> User-Friendly Interface</h4>
+          <br />
+          <br />
+          <a href="{%url 'upload'%}" class="home_button"> Try Now! </a>
+        </div>
+    </div>
+  </div>
+  
+  <div class="pg2" id="pg2">
+      <div class="slide1">
+        <h2>Facial Attendance System:</h2>
+        <br />
+        <p>
+          In the modern, fast-paced world, the efficient management of
+          attendance has become an indispensable requirement for businesses and
+          educational institutions. This critical need has led to the creation
+          of Hawkeye, a revolutionary Facial Attendance System that promises to
+          simplify and streamline attendance-related processes like never
+          before.<br />
+          <br />
+          Hawkeye stands as a one-stop solution to all your attendance
+          management needs, offering an array of advantages that can
+          significantly improve the way organizations track and manage
+          attendance. Here are some key features and benefits:
+        </p>
+      </div>
+      <h2>
+        <br />Key Features: <br />
+        <br />
+      </h2>
+      <div class="features">
+        <div class="ff">
+          <h3>Seamless System</h3>
+          <p>
+            Hawkeye is designed to be a seamless and user-friendly system. It's
+            intuitive and easy to use, making it accessible to a wide range of
+            users, from students and employees to administrators.
+          </p>
+        </div>
+        <div class="ff">
+          <h3>Data Analytics</h3>
+          <p>
+            Hawkeye collects valuable data that can be used for analytics. This
+            data can be a goldmine for businesses and institutions, helping them
+            make data-driven decisions to enhance operations.
+          </p>
+        </div>
+        <div class="ff">
+          <h3>Cost Efficiency</h3>
+          <p>
+            Over time, adopting Hawkeye can lead to significant cost savings by
+            reducing the administrative workload and improving resource
+            allocation.
+          </p>
+        </div>
+        <div class="ff">
+          <h3>Time Efficiency</h3>
+          <p>
+            This system operates at remarkable speed, ensuring that attendees
+            are checked in within seconds. This rapid processing is particularly
+            advantageous in settings where time is of the essence.
+          </p>
+        </div>
+      </div>
+      <!-- <a href="#" class="home__button2">
+        Contact Us <i class="bx bx-right-arrow-alt"></i>
+      </a> -->
+    </div>
+
+    <div id="faq">
+      <h4>FAQ</h4>
+      <h6>Here are some of the most common questions we get!</h6>
+      <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseOne"
+              aria-expanded="true"
+              aria-controls="panelsStayOpen-collapseOne"
+            >
+              What is the purpose of this website?
+            </button>
+          </h2>
+          <div
+            id="panelsStayOpen-collapseOne"
+            class="accordion-collapse collapse show"
+          >
+            <div class="accordion-body">
+              <p> The purpose of this website is to use face recognition technology
+              to take attendance for a class.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseTwo"
+              aria-expanded="false"
+              aria-controls="panelsStayOpen-collapseTwo"
+            >
+              How does the website work?
+            </button>
+          </h2>
+          <div
+            id="panelsStayOpen-collapseTwo"
+            class="accordion-collapse collapse"
+          >
+            <div class="accordion-body">
+              The website allows users to upload a photo as input. It then uses
+              an imported machine learning model to analyze the photo and
+              determine how many students are present or absent.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseThree"
+              aria-expanded="false"
+              aria-controls="panelsStayOpen-collapseThree"
+            >
+              What kind of photos can be used as input?
+            </button>
+          </h2>
+          <div
+            id="panelsStayOpen-collapseThree"
+            class="accordion-collapse collapse"
+          >
+            <div class="accordion-body">
+              The website accepts any standard image file format, such as JPEG
+              or PNG.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseFour"
+              aria-expanded="false"
+              aria-controls="panelsStayOpen-collapseFour"
+            >
+              Do I need any special hardware or software to use this website?
+            </button>
+          </h2>
+          <div
+            id="panelsStayOpen-collapseFour"
+            class="accordion-collapse collapse"
+          >
+            <div class="accordion-body">
+              <p>
+                No, you do not need any special hardware or software. The
+                website can be accessed using a standard web browser on any
+                device.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseFive"
+              aria-expanded="false"
+              aria-controls="panelsStayOpen-collapseFive"
+            >
+              Is the face recognition technology accurate?
+            </button>
+          </h2>
+          <div
+            id="panelsStayOpen-collapseFive"
+            class="accordion-collapse collapse"
+          >
+            <div class="accordion-body">
+              <p>
+                The accuracy of the face recognition technology depends on the
+                quality of the input photo and the performance of the machine
+                learning model. However, it is designed to provide reliable
+                results in most cases.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer">
+        <div class="info">
+          <h3>Hawk-Eye</h3>
+          <ul>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <p>hawkeyeio@gmail.com</p>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <p>+91 9877543210</p>
+            </li>
+          </ul>
+        </div>
+        <div class="social">
+          <ul>
+            <li>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="footerform">
+          <form action="https://formspree.io/f/xeqbvkqw" method="post">
+            <h4>Contact Form</h4>
+            <input
+              type="text"
+              placeholder="Name"
+              id="contact-name"
+              name="Name"
+              value=""
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              id="contact-email"
+              name="Email"
+              value=""
+            />
+            <input
+              type="text"
+              placeholder="Your Message"
+              id="contact-msg"
+              name="Message"
+              value=""
+            />
+            <button type="submit" id="contact-submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </footer>
+    <!--===== MAIN JS =====-->
+    <script src="{% static 'index.js' %}"></script>
+  </body>
+</html>

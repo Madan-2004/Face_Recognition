@@ -1,0 +1,128 @@
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Charm&family=Ubuntu:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap');
+
+
+/* Reset some default styles */
+body, h1, h2, table {
+    margin: 0;
+    padding: 0;
+    color: #ddd;
+}
+
+body {
+    font-family: 'Ubuntu';
+    background-color: rgba(73, 68, 163, 0.227);
+    /* background: url(dashbg.jpg) ; */
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    height: 100%;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+.pg1{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px 0;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.main1 {
+    max-width: 800px;
+    padding: 20px;
+    background-color: rgba(0, 140, 255, 0.126);
+    backdrop-filter: blur(5px);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.603);
+}
+
+.upload-container, .results-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.upload-container h2, .results-container h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.drop-zone {
+    border: 2px dashed #aaa;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.drop-zone p {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+/* Style for when a file is being dragged over the drop zone */
+.drop-zone.drag-over {
+    border-color: #36A2EB;
+    background-color: #f0f0f0;
+}
+
+input[type="file"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #fff;
+    text-align: left;
+}
+
+th {
+    background-color: #333;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #392a09;
+}
+
+tr:hover {
+    background-color: #fab80052;
+}

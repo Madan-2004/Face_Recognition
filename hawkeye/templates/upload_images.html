@@ -1,0 +1,181 @@
+<!-- upload_images.html -->
+{%load static%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Attendify.io</title>
+    <!-- ===== BOX ICONS ===== -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Add appropriate styling if required -->
+    <style>
+      /* styles.css */
+      body {
+        background-color: rgba(72, 68, 163, 0.2);
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Aligns content horizontally */
+        align-items: center; /* Aligns content vertically */
+        margin: 0;
+      }
+      table {
+        border-collapse: collapse;
+        width: 80%;
+        margin-top: 20px;
+        background-color: rgba(72, 68, 163, 0.1);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1); /* Adding shadow */
+        border-radius: 10px; /* Adding curved borders */
+        overflow: hidden; /* Hide overflowing shadows */
+      }
+
+      th,
+      td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 12px;
+        transition: background-color 0.3s; /* Add hover effect */
+      }
+
+      tr:nth-child(even) {
+        background-color: rgba(72, 68, 163, 0.05);
+      }
+
+      tr:hover {
+        background-color: rgba(
+          72,
+          68,
+          163,
+          0.1
+        ); /* Darken background on hover */
+      }
+
+      form {
+        margin-top: 30px; /* Adjusted form margin */
+        padding: 20px; /* Added padding */
+        border: 1px solid #ddd; /* Added border */
+        border-radius: 5px; /* Rounded corners */
+        background-color: #f9f9f9; /* Light background color */
+      }
+
+      h2 {
+        font-size: 28px; /* Increased font size */
+        color: #444; /* Darkened the text color */
+        margin-top: 40px; /* Adjusted top margin */
+      }
+
+      a {
+        text-decoration: none;
+        color: #006699; /* Changed link color */
+        display: inline-block;
+        margin-top: 15px;
+      }
+
+      .up{
+        padding: 10px 20px;
+        border: none;
+        background-color: rgb(72,68,163,0.9); /* Green button background */
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s; /* Button hover effect */
+      }
+
+      button:hover {
+        background-color: #45a049; /* Darker green on hover */
+      }
+
+    </style>
+    <link rel="stylesheet" href="{% static "index.css" %}" />
+  </head>
+  <body>
+    <header class="header" id="header">
+      <div class="header__toggle">
+        <i
+          class="bx bx-menu"
+          id="header-toggle"
+          style="color: rgb(72, 68, 163)"
+        ></i>
+      </div>
+    </header>
+
+    <div class="l-navbar" id="nav-bar">
+      <nav class="nav">
+        <div>
+          <a href="{%url 'HOME' %}" class="nav__logo">
+            <i class="bx bx-home nav__logo-icon"></i>
+            <span class="nav__logo-name">Home</span>
+          </a>
+
+          <div class="nav__list">
+            <a href="{%url 'upload' %}" class="nav__link active ">
+              <i class="bx bx-grid-alt nav__icon"></i>
+              <span class="nav__name">Dashboard</span>
+            </a>
+
+            <a href="{%url 'HOME' %}" class="nav__link">
+              <i class="bx bx-folder nav__icon"></i>
+              <span class="nav__name">Features</span>
+            </a>
+
+            <a href="{%url 'login_or_register' %}" class="nav__link">
+              <i class="bx bx-user nav__icon"></i>
+              <span class="nav__name">Users</span>
+            </a>
+          </div>
+        </div>
+
+        {% if user.is_authenticated %}
+        <a href="{%url 'logout'%}" class="nav__link">
+          <i class="bx bx-log-out nav__icon"></i>
+          <span class="nav__name">Log Out</span>
+        </a>
+        {% else %}
+        <a href="{%url 'login_or_register'%}" class="nav__link">
+          <i class="bx bx-log-in nav__icon"></i>
+          <span class="nav__name">Log In</span>
+        </a>
+        {% endif %}
+      </nav>
+    </div>
+    {% comment %} <div class="upload">
+      <form method="post" action="{% url 'upload' %}" enctype="multipart/form-data">
+        <h2>Upload <span>Images!</span></h2>
+        {% csrf_token %}
+          <label for="photo-upload">Upload Photos: </label>
+          <input type="file" name="images" multiple />
+          
+          <button type="submit" id="analyze-button" class="up">Upload</button>
+      </form>    
+  </div> {% endcomment %}
+    <form
+      method="post"
+      action="{% url 'upload' %}"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %}
+      <input type="file" name="images" multiple />
+      <button type="submit" class="up btn">Upload Files</button>
+    </form>
+    {% if names %}
+    <h2>Student Data</h2>
+    <a href="?download=true" class ="up">Download Excel File</a>
+    {{ output_html|safe }} 
+    <!-- Display the DataFrame table -->
+    {% endif %}
+    <script src="{% static 'index.js' %}"></script>
+  </body>
+</html>

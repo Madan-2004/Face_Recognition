@@ -1,0 +1,241 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ===== BOX ICONS ===== -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="{% static "index.css" %}" />
+    <link rel="shortcut icon" href="eyelogo3.png" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static "login.css" %}">
+    <title>Login</title>
+  </head>
+  <body id="body-pd">
+    <header class="header" id="header">
+      <div class="header__toggle">
+        <i
+          class="bx bx-menu"
+          id="header-toggle"
+          style="color: rgb(72, 68, 163)"
+        ></i>
+      </div>
+    </header>
+
+    <div class="l-navbar" id="nav-bar">
+      <nav class="nav">
+        <div>
+          <a href="{%url 'HOME' %}" class="nav__logo">
+            <i class="bx bx-home nav__logo-icon"></i>
+            <span class="nav__logo-name">Home</span>
+          </a>
+
+          <div class="nav__list">
+            <a href="{%url 'upload' %}" class="nav__link">
+              <i class="bx bx-grid-alt nav__icon"></i>
+              <span class="nav__name">Dashboard</span>
+            </a>
+
+            <a href="{%url 'HOME' %}" class="nav__link">
+              <i class="bx bx-folder nav__icon"></i>
+              <span class="nav__name">Features</span>
+            </a>
+
+            <!-- <a href="#" class="nav__link">
+                <i class="bx bx-bar-chart-alt-2 nav__icon"></i>
+                <span class="nav__name">Analytics</span>
+              </a> -->
+
+            <a href="{%url 'login_or_register' %}" class="nav__link active">
+              <i class="bx bx-user nav__icon"></i>
+              <span class="nav__name">Users</span>
+            </a>
+
+            <!-- <a href="#" class="nav__link">
+                <i class="bx bx-bookmark nav__icon"></i>
+                <span class="nav__name">Favorites</span>
+              </a> -->
+          </div>
+        </div>
+
+        {% if user.is_authenticated %}
+               <a href="{%url 'logout'%}" class="nav__link">
+                     <i class="bx bx-log-out nav__icon"></i>
+                    <span class="nav__name">Log Out</span>
+                </a>
+                {% else %}
+                <a href="{%url 'login_or_register'%}" class="nav__link">
+                  <i class="bx bx-log-in nav__icon"></i>
+                  <span class="nav__name">Log In</span>
+                </a>
+        {% endif %}
+      </nav>
+    </div>
+
+    <div class="container1">
+      <section id="s2">
+        <h3>New Here?</h3>
+        <p>Sign Up with your Credentials.</p>
+        <button class="btn" id="create">Create Account</button>
+      </section>
+
+      <!-- Login Section -->
+      <section id="s1">
+        <h2>Login</h2>
+        <h5>Sign in to continue Access!</h5>
+        <form action="" method="post">
+          <h1>Login</h1>
+          
+          <div class="input-box">
+              <input type="text" name="username" placeholder="Username" >
+          </div>
+          {% for error in login_form.username.errors %}
+          <span class="error">{{ error }}</span>
+          {% endfor %}
+          <div class="input-box">
+              <input type="password" name="password" placeholder="Password">
+          </div>
+          {% for error in login_form.password.errors %}
+          <span class="error">{{ error }}</span>
+          {% endfor %}
+          <button type="submit" class="btn2" name='login'>Login</button>
+          {% csrf_token %}
+      </form>
+      </section>
+    </div>
+
+    <div class="container2">
+      <section id="s22">
+        <h3>Welcome Back!</h3>
+        <p>Login To Access!</p>
+        <button class="btn" id="log">Sign In</button>
+      </section>
+
+      <!-- Signup Section -->
+      <section id="s21">
+        <form method="post">
+          {% csrf_token %}
+          <h1>Sign Up</h1> 
+          <div>
+          <div class="input-box">
+              <input type="text" name="username" placeholder="Username" {% if registration_form.username.value %}value="{{ registration_form.username.value }}"{% endif %}>
+          </div>
+          {% for error in registration_form.username.errors %}
+          <span class="error">{{ error }}</span>
+          {% endfor %}
+          <div class="input-box">
+              <input type="email" name="email" placeholder="Email" {% if registration_form.email.value %}value="{{ registration_form.email.value }}"{% endif %}>
+          </div>
+          {% for error in registration_form.email.errors %}
+          <span class="error">{{ error }}</span>
+          {% endfor %}
+          <div class="input-box">
+              <input type="password" name="password1" placeholder="Password">
+          </div>
+          {% for error in registration_form.password1.errors %}
+          <span class="error">{{ error }}</span>
+          {% endfor %}
+          <div class="input-box">
+              <input type="password" name="password2" placeholder="Confirm Password">
+          </div>        
+            {% for error in registration_form.password2.errors %}
+            <span class="error">{{ error }}</span>
+            {% endfor %}    </div>
+          <button type="submit" class="btn2" name="register">Sign Up</button>
+      </form>
+      </section>
+    </div>
+    <footer>
+      <div class="footer">
+        <div class="info">
+          <h4>Attendify.io</h4>
+        </div>
+        <div class="social">
+          <ul>
+            <li>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="rights">
+          <p><i class="fa-solid fa-copyright"></i> Copyrights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!--===== MAIN JS =====-->
+    <script src="{% static 'index.js' %}"></script>
+    <script>
+      var siShow = document.getElementById("si-show");
+      var siPassword = document.getElementById("si-password");
+      function toggleShowSI() {
+        if (siPassword.type == "password") {
+          siPassword.type = "text";
+          siShow.innerHTML = "<i class='fa-solid fa-eye'></i>";
+          siShow.classList.add("sh");
+        } else {
+          siPassword.type = "password";
+          siShow.innerHTML = "<i class='fa-solid fa-eye-slash'></i>";
+          siShow.classList.remove("sh");
+        }
+      }
+
+      var suShow = document.getElementById("su-show");
+      var suPassword = document.getElementById("su-password");
+      function toggleShowSU() {
+        if (suPassword.type == "password") {
+          suPassword.type = "text";
+          suShow.innerHTML = "<i class='fa-solid fa-eye'></i>";
+          suShow.classList.add("sh");
+        } else {
+          suPassword.type = "password";
+          suShow.innerHTML = "<i class='fa-solid fa-eye-slash'></i>";
+          suShow.classList.remove("sh");
+        }
+      }
+
+      var create = document.getElementById("create");
+      var log = document.getElementById("log");
+      var container1 = document.querySelector(".container1");
+      var container2 = document.querySelector(".container2");
+      var s1 = document.getElementById("s1");
+      var s2 = document.getElementById("s2");
+      var s21 = document.getElementById("s21");
+      var s22 = document.getElementById("s22");
+      create.addEventListener("click", () => {
+        container1.style.display = "none";
+        container2.style.display = "flex";
+        s22.classList.add("right2");
+        s21.classList.add("left2");
+      });
+      log.addEventListener("click", () => {
+        container2.style.display = "none";
+        container1.style.display = "flex";
+        container1.classList.add("row-reverse");
+        s2.classList.add("left1");
+        s1.classList.add("right1");
+      });
+    </script>
+  </body>
+</html>
